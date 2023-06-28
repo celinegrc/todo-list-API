@@ -1,7 +1,7 @@
 const express = require('express')
 const mongoose = require('mongoose')
 const userRoutes = require('./routes/user')
-//const todoRoutes = require('./routes/books')
+const todoRoutes = require('./routes/todo')
 const path = require('path')
 const dotenv = require('dotenv').config()
 
@@ -24,7 +24,7 @@ app.use((req, res, next) => {
 app.use(express.json())
      
 app.use('/api/auth', userRoutes)
-//app.use('/api/todo', todoRoutes)
+app.use('/api/todo', todoRoutes)
 
 
 module.exports = app
