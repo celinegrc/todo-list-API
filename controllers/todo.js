@@ -13,7 +13,7 @@ exports.addTodo = async (req, res) => {
       
     // Enregistre le todo dans la base de données
     await todo.save()
-        res.status(201).json( todo.todo )
+        res.status(201).json( todo)
 
     } catch (error) {
       res.status(400).json({ error })
@@ -22,8 +22,8 @@ exports.addTodo = async (req, res) => {
 
 exports.getTodos = async (req, res) => {
     try {
-        const userId = req.query.userId; // Récupère l'ID de l'utilisateur depuis le paramètre de requête
-        const todos = await Todo.find({ userId: userId }); // Filtre les todos par l'ID de l'utilisateur
+        const userId = req.query.userId; 
+        const todos = await Todo.find({ userId: userId }); 
          res.status(200).json(todos)
         } catch (error) {
             res.status(500).json({ error })
