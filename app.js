@@ -2,7 +2,8 @@ const express = require('express')
 const mongoose = require('mongoose')
 const userRoutes = require('./routes/user')
 const todoRoutes = require('./routes/todo')
-const path = require('path')
+const helmet = require ('helmet')
+const cors = require('cors')
 const dotenv = require('dotenv').config()
 
 
@@ -14,12 +15,9 @@ mongoose.connect(`mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PA
 
 const app = express()
 
-app.use((req, res, next) => {
-  res.setHeader('Access-Control-Allow-Origin', '*')
-  res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content, Accept, Content-Type, Authorization')
-  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, PATCH, OPTIONS')
-  next()
-})
+app.use(helmet())
+app.use(cors())
+
 
 app.use(express.json())
      
