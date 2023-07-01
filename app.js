@@ -20,7 +20,13 @@ app.use(cors())
 
 
 app.use(express.json())
-     
+
+
+app.get("/", (req, res) => {
+  res.send("Hello server");
+});
+
+
 app.use('/api/auth', userRoutes)
 app.use('/api/todo', todoRoutes)
 
