@@ -30,12 +30,11 @@ app.use(express.json())
 
 
 app.get("/", (req, res) => {
-  res.send("Hello server");
-});
+  res.send("Hello server")
+})
 
 
 app.use('/api/auth', userRoutes)
 app.use('/api/todo', todoRoutes)
-
 
 module.exports = app
